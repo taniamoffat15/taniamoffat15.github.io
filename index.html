@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Francis and Sophie's Christmas Wishlists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #c62828;
+            margin-bottom: 10px;
+        }
+
+        #countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #2e7d32;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        li {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎄 Francis and Sophie's Christmas Wishlist 🎁</h1>
+
+    <div id="countdown">Loading countdown...</div>
+
+    <h2>Wish List</h2>
+    <ul>
+        <li>Books</li>
+        <li>Chocolate</li>
+    </ul>
+
+    <script>
+        function updateCountdown() {
+            const christmas = new Date("December 25, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = christmas - now;
+
+            if (diff <= 0) {
+                document.getElementById("countdown").innerHTML =
+                    "🎅 Merry Christmas! 🎄";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days} days ${hours} hours ${minutes} mins ${seconds} secs until Christmas 🎄`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+</html>
